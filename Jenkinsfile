@@ -47,11 +47,11 @@ pipeline {
             steps {
                 echo 'Deploying and cleaning'
                 sh 'docker image pull jk911/springboot'
-                sh 'docker container stop khalid-springboot || echo "this container does not exist" '
+                sh 'docker container stop jk911-springboot || echo "this container does not exist" '
                 sh 'docker network create dev || echo "this network exists"'
                 sh 'echo y | docker container prune '
 
-                sh 'docker container run -d --rm --name khalid-springboot -p 8081:8080 --network dev jk911/springboot'
+                sh 'docker container run -d --rm --name jk911-springboot -p 5000:5000 --network dev jk911/springboot'
             }
         }
  
